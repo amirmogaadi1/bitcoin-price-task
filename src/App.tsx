@@ -9,7 +9,7 @@ import {currencyDecision, formatPrice} from './utils/numbersUtils';
 import {CurrencyType, CurrentPrice} from './models/CurrentPriceModel';
 import {ChartData} from './models/ChartDataModel';
 
-import './App.css';
+import './App.scss';
 
 function App() {
   const [currency, setCurrency] = useState<CurrentPrice>({
@@ -71,7 +71,7 @@ function App() {
   }, [currency.code, getChartData]);
 
   return (
-    <div>
+    <div className="main-container">
       <div className="nav-bar">Bitcoin price task app</div>
       <div className="price-container">
         <Select
