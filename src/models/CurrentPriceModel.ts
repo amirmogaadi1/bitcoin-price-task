@@ -11,5 +11,5 @@ export interface CurrentPrice {
   code: CurrencyType;
   rate?: string;
   description?: string;
-  rate_float: number;
+  rate_float?: number;
 }
