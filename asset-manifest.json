@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/bitcoin-price-task/static/css/main.9e9094ab.chunk.css",
+    "main.js": "/bitcoin-price-task/static/js/main.58a423d8.chunk.js",
+    "main.js.map": "/bitcoin-price-task/static/js/main.58a423d8.chunk.js.map",
+    "runtime-main.js": "/bitcoin-price-task/static/js/runtime-main.e8fbf062.js",
+    "runtime-main.js.map": "/bitcoin-price-task/static/js/runtime-main.e8fbf062.js.map",
+    "static/css/2.c555d6cc.chunk.css": "/bitcoin-price-task/static/css/2.c555d6cc.chunk.css",
+    "static/js/2.4a9b2dfe.chunk.js": "/bitcoin-price-task/static/js/2.4a9b2dfe.chunk.js",
+    "static/js/2.4a9b2dfe.chunk.js.map": "/bitcoin-price-task/static/js/2.4a9b2dfe.chunk.js.map",
+    "static/js/3.465865a8.chunk.js": "/bitcoin-price-task/static/js/3.465865a8.chunk.js",
+    "static/js/3.465865a8.chunk.js.map": "/bitcoin-price-task/static/js/3.465865a8.chunk.js.map",
+    "index.html": "/bitcoin-price-task/index.html",
+    "static/css/2.c555d6cc.chunk.css.map": "/bitcoin-price-task/static/css/2.c555d6cc.chunk.css.map",
+    "static/css/main.9e9094ab.chunk.css.map": "/bitcoin-price-task/static/css/main.9e9094ab.chunk.css.map",
+    "static/js/2.4a9b2dfe.chunk.js.LICENSE.txt": "/bitcoin-price-task/static/js/2.4a9b2dfe.chunk.js.LICENSE.txt",
+    "static/media/semantic.min.css": "/bitcoin-price-task/static/media/outline-icons.ddae9b1b.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e8fbf062.js",
+    "static/css/2.c555d6cc.chunk.css",
+    "static/js/2.4a9b2dfe.chunk.js",
+    "static/css/main.9e9094ab.chunk.css",
+    "static/js/main.58a423d8.chunk.js"
+  ]
+}
