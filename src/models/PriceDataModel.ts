@@ -11,3 +11,14 @@ export interface CurrentPriceDataModel {
     [key: string]: CurrentPrice;
   };
 }
+
+export interface CurrentChartDataModel {
+  time: {
+    updated: string;
+    updatedISO: string;
+  };
+  disclaimer: string;
+  bpi: {
+    [key: string]: number;
+  };
+}

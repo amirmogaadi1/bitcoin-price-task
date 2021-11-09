@@ -3,10 +3,11 @@ import {Card, DropdownProps, Select} from 'semantic-ui-react';
 
 import {CurrencyType, CurrentPrice} from './models/CurrentPriceModel';
 
-import {getCurrentPriceByType} from './service/CoinDeskService';
+import {getCurrentPriceByType, getHistory} from './service/CoinDeskService';
+
+import {currencyDecision, formatPrice} from './utils/numbersUtils';
 
 import './App.css';
-import {currencyDecision, formatPrice} from './utils/numbersUtils';
 
 function App() {
   const [currency, setCurrency] = useState<CurrentPrice>({
@@ -20,6 +21,12 @@ function App() {
     });
   };
 
+  const getChartData = useCallback((type: CurrencyType): void => {
+    getHistory(type).then((historyData) => {
+      console.log(historyData.data);
+    });
+  }, []);
+
   const handleSelect = useCallback(
     (e: SyntheticEvent, {value}: DropdownProps): void => {
       setCurrentPrice(value as CurrencyType);
@@ -29,16 +36,18 @@ function App() {
 
   useEffect(() => {
     setCurrentPrice(currency.code);
+    getChartData(currency.code);
     const currencyInterval = setInterval(() => {
       setCurrentPrice(currency.code);
     }, 5000);
     return () => {
       clearInterval(currencyInterval);
     };
-  }, [currency.code]);
+  }, [currency.code, getChartData]);
 
   return (
     <div>
+      <div className="nav-bar">Bitcoin price task app</div>
       <div className="price-container">
         <Select
           placeholder="Select your currency"

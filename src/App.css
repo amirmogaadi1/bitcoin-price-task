@@ -1,3 +1,10 @@
+.nav-bar {
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+  background-color: #4bc0c0ff;
+}
+
 .price-container {
   display: flex;
   justify-content: space-around;
@@ -5,4 +12,8 @@
   align-items: center;
   height: 200px;
   margin: 0 auto;
+}
+
+.card-container {
+  width: 200px !important;
 }
