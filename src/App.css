@@ -17,3 +17,12 @@
 .card-container {
   width: 200px !important;
 }
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+}
+
+.chart-container > div {
+  width: 70%;
+}

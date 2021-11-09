@@ -1,11 +1,13 @@
 import React, {SyntheticEvent, useCallback, useEffect, useState} from 'react';
 import {Card, DropdownProps, Select} from 'semantic-ui-react';
-
-import {CurrencyType, CurrentPrice} from './models/CurrentPriceModel';
+import {Line} from 'react-chartjs-2';
 
 import {getCurrentPriceByType, getHistory} from './service/CoinDeskService';
 
 import {currencyDecision, formatPrice} from './utils/numbersUtils';
+
+import {CurrencyType, CurrentPrice} from './models/CurrentPriceModel';
+import {ChartData} from './models/ChartDataModel';
 
 import './App.css';
 
@@ -15,23 +17,46 @@ function App() {
     rate_float: 0,
   });
 
+  const [chartData, setChartData] = useState<ChartData>({
+    labels: [],
+    datasets: [],
+  });
+
   const setCurrentPrice = (type: CurrencyType): void => {
     getCurrentPriceByType(type).then((currentPriceData) => {
       setCurrency({...currentPriceData.data.bpi[type]});
     });
   };
 
-  const getChartData = useCallback((type: CurrencyType): void => {
-    getHistory(type).then((historyData) => {
-      console.log(historyData.data);
-    });
-  }, []);
+  const getChartData = useCallback(
+    (type: CurrencyType): void => {
+      getHistory(type).then((historyData) => {
+        const history = historyData.data.bpi;
+        const categories = Object.keys(history);
+        const data: number[] = Object.values(history);
+        setChartData({
+          labels: categories,
+          datasets: [
+            {
+              label: `${currency.code} Price`,
+              data,
+              fill: true,
+              backgroundColor: '#4BC0C033',
+              borderColor: '#4BC0C0FF',
+            },
+          ],
+        });
+      });
+    },
+    [currency.code],
+  );
 
   const handleSelect = useCallback(
     (e: SyntheticEvent, {value}: DropdownProps): void => {
       setCurrentPrice(value as CurrencyType);
+      getChartData(value as CurrencyType);
     },
-    [],
+    [getChartData],
   );
 
   useEffect(() => {
@@ -71,6 +96,25 @@ function App() {
             </Card.Description>
           </Card.Content>
         </Card>
+      </div>
+      <div className="chart-container">
+        <div>
+          <Line
+            data={chartData}
+            options={{
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Bitcoin price',
+                },
+                legend: {
+                  display: false,
+                },
+              },
+              responsive: true,
+            }}
+          />
+        </div>
       </div>
     </div>
   );
