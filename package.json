@@ -2,6 +2,7 @@
   "name": "bitcoin-price-task",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://amirmogaadi1.github.io/bitcoin-price-task",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -27,7 +28,9 @@
     "build": "react-scripts build",
     "lint": "eslint src/**/*.{ts,tsx} --quiet --fix",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -53,6 +56,7 @@
     "node-sass": "^6.0.1",
     "prettier": "^2.4.1",
     "sass-loader": "^12.3.0",
-    "style-loader": "^3.3.1"
+    "style-loader": "^3.3.1",
+    "gh-pages": "^3.2.3"
   }
 }
