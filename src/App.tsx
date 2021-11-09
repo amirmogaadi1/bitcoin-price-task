@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {SyntheticEvent, useCallback, useEffect, useState} from 'react';
+import {DropdownProps, Select} from 'semantic-ui-react';
 
 import {CurrencyType, CurrentPrice} from './models/CurrentPriceModel';
 
@@ -17,6 +18,13 @@ function App() {
     });
   };
 
+  const handleSelect = useCallback(
+    (e: SyntheticEvent, {value}: DropdownProps): void => {
+      setCurrentPrice(value as CurrencyType);
+    },
+    [],
+  );
+
   useEffect(() => {
     setCurrentPrice(currency.code);
     const currencyInterval = setInterval(() => {
@@ -27,7 +35,25 @@ function App() {
     };
   }, [currency.code]);
 
-  return <div className="App">{currency.rate_float}</div>;
+  return (
+    <div className="App">
+      {' '}
+      <Select
+        placeholder="Select your currency"
+        value={currency.code}
+        onChange={handleSelect}
+        options={[
+          {value: 'USD', text: 'USD'},
+          {value: 'EUR', text: 'EUR'},
+          {value: 'GBP', text: 'GBP'},
+          {value: 'CNY', text: 'CNY'},
+          {value: 'JPY', text: 'JPY'},
+          {value: 'PLN', text: 'PLN'},
+        ]}
+      />
+      {currency.rate_float}
+    </div>
+  );
 }
 
 export default App;
